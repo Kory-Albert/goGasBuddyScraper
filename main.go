@@ -18,9 +18,15 @@ var (
 
 	stationNames = os.Getenv("STATION_NAMES")
 	stations     = os.Getenv("STATION_IDS")
+	stringIDs    = strings.Split(stations, ",")
+	stringNames  = strings.Split(stationNames, ",")
 )
 
 func main() {
+	// Check 1:1 match on Station ID/Names
+	if len(stringIDs) != len(stringNames) {
+		log.Fatal("STATION_IDS and STATION_NAMES must be 1:1 match")
+	}
 	client := gasbuddy.NewClient()
 
 	fmt.Println("Connecting to InfluxDB...")
@@ -31,9 +37,6 @@ func main() {
 	}
 	fmt.Println("Connected to InfluxDB successfully")
 	defer conn.Close()
-
-	var stringIDs []string = strings.Split(stations, ",")
-	var stringNames []string = strings.Split(stationNames, ",")
 
 	for i := range stringIDs {
 		raw, err := client.GetStationPrices(stringIDs[i])

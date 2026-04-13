@@ -10,13 +10,15 @@ import (
 )
 
 // Environment Variables
-var influxdbToken string = os.Getenv("INFLUXDB_TOKEN")
-var influxURL string = os.Getenv("INFLUXDB_URL")
-var influxOrg string = os.Getenv("INFLUXDB_ORG")
-var influxBucket string = os.Getenv("INFLUXDB_BUCKET")
+var (
+	influxdbToken = os.Getenv("INFLUXDB_TOKEN")
+	influxURL     = os.Getenv("INFLUXDB_URL")
+	influxOrg     = os.Getenv("INFLUXDB_ORG")
+	influxBucket  = os.Getenv("INFLUXDB_BUCKET")
 
-var stationNames string = os.Getenv("STATION_NAMES")
-var stations string = os.Getenv("STATION_IDS")
+	stationNames = os.Getenv("STATION_NAMES")
+	stations     = os.Getenv("STATION_IDS")
+)
 
 func main() {
 	client := gasbuddy.NewClient()

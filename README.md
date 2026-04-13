@@ -60,7 +60,7 @@ The following environment variables must be set before running the application:
 Each data point written to InfluxDB has:
 - **Measurement**: `gas_prices`
 - **Tags**:
-  - `station`: The name of the gas station (from STATION_NAMES)
+  - `source`: The name of the gas station (from STATION_NAMES)
 - **Fields**:
   - `price`: The gas price as a float64
 - **Timestamp**: When the data was collected

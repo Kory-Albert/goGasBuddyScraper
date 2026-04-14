@@ -8,7 +8,7 @@ type StationResponse struct {
 				FuelProduct string `json:"fuelProduct"`
 				LongName    string `json:"longName"`
 				Credit      struct {
-					Price          float64 `json:"price"`
+					Price          float32 `json:"price"`
 					FormattedPrice string  `json:"formattedPrice"`
 					PostedTime     string  `json:"postedTime"`
 				} `json:"credit"`

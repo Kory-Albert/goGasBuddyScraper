@@ -62,7 +62,7 @@ Each data point written to InfluxDB has:
 - **Tags**:
   - `source`: The name of the gas station (from STATION_NAMES)
 - **Fields**:
-  - `price`: The gas price as a float64
+  - `price`: The gas price as a float32
 - **Timestamp**: When the data was collected
 
 ## License

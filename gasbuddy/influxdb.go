@@ -30,7 +30,7 @@ func ConnectToInfluxDB(dbToken string, dbURL string) (influxdb2.Client, error) {
 }
 
 // WriteToInfluxDB writes station price data to InfluxDB
-func WriteToInfluxDB(client influxdb2.Client, org string, bucket string, stationName string, price float64) error {
+func WriteToInfluxDB(client influxdb2.Client, org string, bucket string, stationName string, price float32) error {
 	// Get a blocking write API instance for synchronous writes
 	writeAPI := client.WriteAPIBlocking(org, bucket)
 

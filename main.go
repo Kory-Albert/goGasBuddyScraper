@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"gasbuddyscraper/gasbuddy"
+	"github.com/Kory-Albert/goGasBuddyScraper/gasbuddy"
 	"log"
 	"os"
 	"strings"

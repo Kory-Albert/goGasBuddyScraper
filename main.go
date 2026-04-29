@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kory-Albert/goGasBuddyScraper/gasbuddy"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/Kory-Albert/goGasBuddyScraper/gasbuddy"
 )
 
 // Environment Variables
@@ -53,12 +54,16 @@ func main() {
 			if p.LongName == "Regular" {
 				fmt.Printf("Extracted price for %s: %s\n", stringNames[i], p.Credit.FormattedPrice)
 				fmt.Printf("Writing to InfluxDB: station=%s, price=%.2f\n", stringNames[i], p.Credit.Price)
-				// Write to InfluxDB
-				err := gasbuddy.WriteToInfluxDB(conn, influxOrg, influxBucket, stringNames[i], p.Credit.Price)
-				if err != nil {
-					log.Printf("Error writing to InfluxDB: %v", err)
-				} else {
-					fmt.Println("Successfully wrote to InfluxDB")
+
+				// Check for empty price
+				if p.Credit.Price != 0 {
+					// Write to InfluxDB
+					err := gasbuddy.WriteToInfluxDB(conn, influxOrg, influxBucket, stringNames[i], p.Credit.Price)
+					if err != nil {
+						log.Printf("Error writing to InfluxDB: %v", err)
+					} else {
+						fmt.Println("Successfully wrote to InfluxDB")
+					}
 				}
 			}
 		}

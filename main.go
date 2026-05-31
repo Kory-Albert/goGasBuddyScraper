@@ -56,7 +56,7 @@ func main() {
 				fmt.Printf("Writing to InfluxDB: station=%s, price=%.2f\n", stringNames[i], p.Credit.Price)
 
 				// Check for empty price
-				if p.Credit.Price != 0 {
+				if p.Credit.Price != 0.00 {
 					// Write to InfluxDB
 					err := gasbuddy.WriteToInfluxDB(conn, influxOrg, influxBucket, stringNames[i], p.Credit.Price)
 					if err != nil {
